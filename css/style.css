@@ -1,0 +1,423 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+    background-color: #1a1a1a;
+    /* Color de fondo base */
+}
+
+/* Background dinámico (Sin cambios) */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    /* Centrado para mejor responsividad */
+    background-repeat: no-repeat;
+    transition: opacity 8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bg-image-1 {
+    opacity: 1;
+}
+
+.bg-image-2 {
+    opacity: 0;
+}
+
+.bg-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: 1;
+}
+
+/* Navegación - Adaptada para Bootstrap */
+.navbar {
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(20px);
+    transition: all 0.4s ease-in-out;
+    padding: 1rem 0;
+}
+
+.navbar.scrolled {
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(30px);
+    padding: 0.5rem 0;
+}
+
+.navbar .logo h1 {
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.8rem;
+    letter-spacing: -1px;
+    margin: 0;
+}
+
+.nav-menu .nav-link {
+    color: #fff;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.nav-menu .nav-link:hover {
+    color: #ff6b35;
+}
+
+.nav-menu .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0.5rem;
+    /* Ajuste para el padding de nav-link */
+    right: 0.5rem;
+    /* Ajuste para el padding de nav-link */
+    height: 2px;
+    background: #ff6b35;
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+}
+
+.nav-menu .nav-link:hover::after {
+    transform: scaleX(1);
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 53, 0.5);
+}
+
+/* Hero Section */
+.hero {
+    z-index: 2;
+    padding: 0 1rem;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.8);
+}
+
+.title-line {
+    display: block;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideUp 1s ease forwards;
+}
+
+.title-line:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.title-line:nth-child(3) {
+    animation-delay: 0.6s;
+    color: #ff6b35;
+}
+
+.title-line:nth-child(1) {
+    animation-delay: 0.6s;
+    color: #ff6b35;
+}
+
+.hero-subtitle {
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 1s;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.8);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-buttons {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 1.3s;
+}
+
+/* Botones - Personalizando Bootstrap */
+.btn-primary {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    border: none;
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #fff;
+    color: #333;
+    transform: translateY(-5px);
+}
+
+/* Features Section */
+.features {
+    background: rgba(0, 0, 0, 0.9);
+    position: relative;
+    z-index: 2;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    color: #fff;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 100%;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.feature-icon {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: #ff6b35;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+/* Products Section */
+.products {
+    background: linear-gradient(135deg, #000000 0%, #2d2d2d 100%);
+    position: relative;
+    z-index: 2;
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.section-subtitle {
+    margin-bottom: 4rem;
+}
+
+.product-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.product-image {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.1);
+}
+
+.product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.product-card:hover .product-overlay {
+    opacity: 1;
+}
+
+.btn-overlay {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+}
+
+.product-card:hover .btn-overlay {
+    transform: scale(1.1);
+}
+
+.product-info {
+    padding: 25px;
+    color: #fff;
+}
+
+.product-info h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.product-info p {
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ff6b35;
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    position: relative;
+    z-index: 2;
+}
+
+.cta-content h2 {
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-cta {
+    background: #fff;
+    color: #ff6b35;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.btn-cta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer */
+.footer {
+    background: #000;
+    position: relative;
+    z-index: 2;
+    color: #fff;
+}
+
+.footer h3,
+.footer h4 {
+    color: #ff6b35;
+}
+
+.footer p {
+    opacity: 0.8;
+}
+
+/* Modal Styles */
+.modal-content {
+    background-color: #2d2d2d;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Animaciones */
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.logo {
+    max-width: 70px;
+}
+
+.bg_desings {
+    background-image: url("../assets/img/fondo_1.png");
+}
+
+.bg_footer {
+    background-image: url("../assets/img/fondo_2.png");
+}
